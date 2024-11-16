@@ -30,7 +30,8 @@ const p3 = new Promise((resolve) => {
 	}, delay);
 })
 
-Promise.all([p1, p2, p3])
+let promiseArr = [p1, p2, p3];
+Promise.all(promiseArr)
 .then((res) => {
 	console.log(res);
 	modifyTable(res);
@@ -38,11 +39,11 @@ Promise.all([p1, p2, p3])
 
 
 function modifyTable(data) {
-	// console.log(data);
 	output.innerHTML = null;
+	let totalTime = 0;
 
 	data.forEach((el, index) => {
-		// console.log(el);
+		totalTime += el[1];
 		const tr = document.createElement('tr');
 		const td1 = document.createElement('td');
 		td1.innerText = el[0];
@@ -52,5 +53,15 @@ function modifyTable(data) {
 		tr.append(td1, td2);
 		output.append(tr);
 	})
+
+	const tr = document.createElement('tr');
+	const td1 = document.createElement('td');
+	td1.innerText = 'Total';
+	const td2 = document.createElement('td');
+	td2.innerText = (totalTime / 1000).toFixed(2);
+
+	tr.append(td1, td2);
+	output.append(tr);
 }
+
 
