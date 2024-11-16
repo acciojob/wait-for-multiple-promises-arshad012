@@ -11,21 +11,21 @@ output.append(tr);
 const p1 = new Promise((resolve) => {
 	let delay = 2000;
 	setTimeout(() => {
-		resolve(['First Promise', delay]);
+		resolve(['Promise 1', delay]);
 	}, delay);
 })
 
 const p2 = new Promise((resolve) => {
 	let delay = 1000;
 	setTimeout(() => {
-		resolve(['Second Promise', delay]);
+		resolve(['Promise 2', delay]);
 	}, delay);
 })
 
 const p3 = new Promise((resolve) => {
 	let delay = 3000;
 	setTimeout(() => {
-		resolve(['Third Promise', delay]);
+		resolve(['Promise 3', delay]);
 	}, delay);
 })
 
