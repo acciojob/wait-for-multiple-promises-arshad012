@@ -58,7 +58,7 @@ function modifyTable(data) {
 	const td1 = document.createElement('td');
 	td1.innerText = 'Total';
 	const td2 = document.createElement('td');
-	td2.innerText = (totalTime / 1000).toFixed(2);
+	td2.innerText = (totalTime / 1000).toFixed(2) + '6';
 
 	tr.append(td1, td2);
 	output.append(tr);
