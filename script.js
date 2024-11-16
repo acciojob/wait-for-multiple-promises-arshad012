@@ -47,7 +47,7 @@ function modifyTable(data) {
 		const td1 = document.createElement('td');
 		td1.innerText = el[0];
 		const td2 = document.createElement('td');
-		td2.innerText = el[1];
+		td2.innerText = el[1] / 1000;
 
 		tr.append(td1, td2);
 		output.append(tr);
