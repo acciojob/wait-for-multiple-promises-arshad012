@@ -1,5 +1,4 @@
 //your JS code here. If required.
-
 const output = document.getElementById('output');
 const tr = document.createElement('tr');
 tr.id = 'loading'
@@ -59,7 +58,7 @@ function modifyTable(data) {
 	td1.innerText = 'Total';
 	const td2 = document.createElement('td');
 	// td2.innerText = (totalTime / 1000).toFixed(2) + '6';
-	td2.innerText = 6;
+	td2.innerText = totalTime/1000;
 
 	tr.append(td1, td2);
 	output.append(tr);
