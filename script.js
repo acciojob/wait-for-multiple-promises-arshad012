@@ -1,5 +1,86 @@
 //your JS code here. If required.
+// Afreen code
+/*
+const output = document.getElementById('output');
 
+// Add "Loading..." row initially
+function showLoadingRow() {
+  // Clear existing rows
+  output.innerHTML = '';
+
+  const tr = document.createElement('tr');
+  tr.id = 'loading'; // Set ID for reference
+  const td = document.createElement('td');
+  td.innerText = 'Loading...';
+  td.setAttribute('colspan', 2); // Span two columns
+  tr.append(td);
+  output.append(tr);
+}
+
+
+// Create promises with random delays
+function createRandomPromise(name) {
+  const delay = Math.floor(Math.random() * 2000) + 1000; // 1 to 3 seconds
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve([name, delay]);
+    }, delay);
+  });
+}
+
+// Function to update the table after promises resolve
+function modifyTable(data) {
+  // Clear the table content (removes "Loading..." row)
+  output.innerHTML = '';
+
+  let totalTime = 0;
+
+  // Add rows for each promise result
+  data.forEach((el) => {
+    totalTime += el[1]; // Accumulate time
+    const tr = document.createElement('tr');
+    const td1 = document.createElement('td');
+    td1.innerText = el[0]; // Promise name
+    const td2 = document.createElement('td');
+    td2.innerText = (el[1] / 1000).toFixed(2); // Time in seconds (formatted)
+
+    tr.append(td1, td2);
+    output.append(tr);
+  });
+
+  // Add "Total" row
+  const tr = document.createElement('tr');
+  const td1 = document.createElement('td');
+  td1.innerText = 'Total';
+  const td2 = document.createElement('td');
+  td2.innerText = (totalTime / 1000).toFixed(2); // Total time in seconds
+
+  tr.append(td1, td2);
+  output.append(tr);
+}
+
+// Main function to execute promises
+function runPromises() {
+  showLoadingRow(); // Show "Loading..." initially
+
+  const p1 = createRandomPromise('Promise 1');
+  const p2 = createRandomPromise('Promise 2');
+  const p3 = createRandomPromise('Promise 3');
+
+  const promiseArr = [p1, p2, p3];
+
+  Promise.all(promiseArr).then((res) => {
+    modifyTable(res); // Update table with resolved data
+  });
+}
+
+// Run the function
+runPromises();
+ // what's wrong with my code why not getting full marks
+*/
+
+// Ritik code
+/*
 window.onload = function () {
   const outputElement = document.getElementById("output");
 
@@ -64,9 +145,9 @@ window.onload = function () {
     outputElement.appendChild(totalRow);
   });
 };
+*/
 
 
-/*
 const output = document.getElementById('output');
 const tr = document.createElement('tr');
 tr.id = 'loading'
@@ -76,31 +157,24 @@ td.setAttribute('colspan', 2);
 tr.append(td);
 output.append(tr);
 
-const p1 = new Promise((resolve) => {
-	let delay = 2000;
-	setTimeout(() => {
-		resolve(['Promise 1', delay]);
-	}, delay);
-})
+function createPromise() {
+	return new Promise((resolve) => {
+		let delay = Math.floor(Math.random()*2000) + 1000;
+		setTimeout(() => {
+			resolve({name:'Promise 1', timeTaken:delay});
+		}, delay);
+	})
+}
 
-const p2 = new Promise((resolve) => {
-	let delay = 1000;
-	setTimeout(() => {
-		resolve(['Promise 2', delay]);
-	}, delay);
-})
 
-const p3 = new Promise((resolve) => {
-	let delay = 3000;
-	setTimeout(() => {
-		resolve(['Promise 3', delay]);
-	}, delay);
-})
+let allPromises = [];
+for(let i=0; i<3; i++) {
+	allPromises.push(createPromise());
+}
 
-let promiseArr = [p1, p2, p3];
-Promise.all(promiseArr)
+
+Promise.all(allPromises)
 .then((res) => {
-	console.log(res);
 	modifyTable(res);
 })
 
@@ -110,12 +184,12 @@ function modifyTable(data) {
 	let totalTime = 0;
 
 	data.forEach((el, index) => {
-		totalTime += el[1];
+		totalTime += el.timeTaken;
 		const tr = document.createElement('tr');
 		const td1 = document.createElement('td');
-		td1.innerText = el[0];
+		td1.innerText = el.name;
 		const td2 = document.createElement('td');
-		td2.innerText = el[1] / 1000;
+		td2.innerText = el.timeTaken / 1000;
 
 		tr.append(td1, td2);
 		output.append(tr);
@@ -131,6 +205,4 @@ function modifyTable(data) {
 	tr.append(td1, td2);
 	output.append(tr);
 }
-*/
-
 
