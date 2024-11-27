@@ -147,15 +147,14 @@ window.onload = function () {
 };
 */
 
-
 const output = document.getElementById('output');
-// const tr = document.createElement('tr');
-// tr.id = 'loading'
-// const td = document.createElement('td');
-// td.innerText = 'Loading...'
-// td.setAttribute('colspan', 2);
-// tr.append(td);
-// output.append(tr);
+const tr = document.createElement('tr');
+tr.id = 'loading'
+const td = document.createElement('td');
+td.innerText = 'Loading...'
+td.setAttribute('colspan', 2);
+tr.append(td);
+output.append(tr);
 
 function createPromise() {
 	return new Promise((resolve) => {
